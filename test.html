@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Bán Hàng</title>
+    <style>
+        .category {
+            cursor: pointer;
+            padding: 10px;
+            background-color: #f2f2f2;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        .products {
+            margin-top: 20px;
+        }
+
+        .product {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chọn danh mục sản phẩm</h1>
+    <div class="categories">
+        <div class="category" data-category="electronics">Điện tử</div>
+        <div class="category" data-category="clothing">Thời trang</div>
+        <div class="category" data-category="groceries">Thực phẩm</div>
+    </div>
+
+    <div class="products">
+        <div id="electronics" class="product">
+            <h2>Sản phẩm điện tử</h2>
+            <p>Sản phẩm 1</p>
+            <p>Sản phẩm 2</p>
+        </div>
+
+        <div id="clothing" class="product">
+            <h2>Sản phẩm thời trang</h2>
+            <p>Sản phẩm 3</p>
+            <p>Sản phẩm 4</p>
+        </div>
+
+        <div id="groceries" class="product">
+            <h2>Sản phẩm thực phẩm</h2>
+            <p>Sản phẩm 5</p>
+            <p>Sản phẩm 6</p>
+        </div>
+    </div>
+
+    <script>
+        const categories = document.querySelectorAll('.category');
+        const products = document.querySelectorAll('.product');
+
+        categories.forEach(category => {
+            category.addEventListener('click', function() {
+                // Ẩn tất cả sản phẩm
+                products.forEach(product => product.classList.remove('active'));
+
+                // Hiển thị sản phẩm phù hợp với danh mục đã chọn
+                const selectedCategory = this.getAttribute('data-category');
+                document.getElementById(selectedCategory).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
